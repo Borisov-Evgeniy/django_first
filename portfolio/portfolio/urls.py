@@ -22,7 +22,10 @@ from skills import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='home'),
-    path('project/<int:project_id>/', views.project, name='project')
+    path('project/<int:project_id>/', views.project, name='project'),
+    path('signup/', views.signupuser, name='signupuser'),
+    path('logout/', views.logoutuser, name='logoutuser'),
+    path('login/', views.loginuser, name='loginuser')
 
 ]
 

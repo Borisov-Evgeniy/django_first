@@ -7,12 +7,51 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class="content">
-        <div class="wrap">
-            {% block content %}
-
-            {% endblock %}
-        </div>
+{% if user.is_authenticated %}
+<div class="menu">
+    <div class="wrap_2">
+        <ul>
+            <li><a href="logo">Пользователь: {{ user.username }}</a></li>
+            <li><a href="{% url 'home' %}">Главная</a></li>
+            <li>
+                <form action="{% url 'logoutuser' %}" method="post">
+                    {% csrf_token %}
+                    <button class="top">Выйти</button>
+                </form>
+            </li>
+        </ul>
     </div>
+</div>
+
+<div class="content">
+    <div class="wrap">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</div>
+
+{% else %}
+{% block content_two %}
+
+
+<div class="menu">
+    <div class="wrap_2">
+        <ul>
+            <li><a href="{% url 'signupuser' %}">Зарегистрироваться</a></li>
+            <li><a href="{% url 'loginuser' %}">Войти</a></li>
+        </ul>
+    </div>
+</div>
+<div class="error">
+    <h4>{{ error }}</h4>
+</div>
+
+{% endblock %}
+{% endif %}
+<div class="error">
+    <h4>{{ error }}</h4>
+</div>
+
 </body>
 </html>

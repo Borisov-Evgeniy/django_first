@@ -60,3 +60,7 @@ h1, h2 {
     text-align: center;
     justify-content: center;
 }
+
+.wrapper_2 {
+    flex-direction: column;
+}

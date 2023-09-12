@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'skills/base.html' %}
+
+{% block content_two %}
+<div class="wrapper_2">
+    <h1>Регистрация: </h1>
+    <form method="post" class="register">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn">Зарегистрироваться</button>
+    </form>
+</div>
+{% endblock %}
